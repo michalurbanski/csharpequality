@@ -48,7 +48,7 @@ namespace Equality
         /// <remarks>Needs to be implemented when Equals is implemented in order to work with HashTables</remarks>
         public override int GetHashCode()
         {
-            return _name.GetHashCode() ^ _group.GetHashCode(); 
+            return _name.GetHashCode() ^ _group.GetHashCode(); // XOR
         }
 
         #endregion

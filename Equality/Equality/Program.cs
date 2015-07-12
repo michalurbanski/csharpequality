@@ -32,7 +32,12 @@ namespace Equality
         /// </remarks>
         internal static void ValueTypesEquality()
         {
-            
+            FoodItem banana = new FoodItem("banana", FoodGroup.Fruits);
+            FoodItem banana2 = new FoodItem("banana", FoodGroup.Fruits);
+            FoodItem chocolate = new FoodItem("chocolate", FoodGroup.Sweets);
+
+            Console.WriteLine("bananas: " + (banana == banana2));
+            Console.WriteLine("banana and chocolate: "+ (banana == chocolate));
         }
     }
 }
