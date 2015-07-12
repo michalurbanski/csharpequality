@@ -10,8 +10,10 @@ namespace Equality
     {
         static void Main(string[] args)
         {
-            ValueTypesEquality(); 
+            ValueTypesEquality();
+            ReferenceTypesEquality(); 
         }
+
 
 
         /// <summary>
@@ -38,6 +40,14 @@ namespace Equality
 
             Console.WriteLine("bananas: " + (banana == banana2));
             Console.WriteLine("banana and chocolate: "+ (banana == chocolate));
+        }
+        
+        /// <summary>
+        /// Implements reference types equality (classes)
+        /// </summary>
+        internal static void ReferenceTypesEquality()
+        {
+            throw new NotImplementedException();
         }
     }
 }
