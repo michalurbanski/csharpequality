@@ -19,6 +19,13 @@ namespace Equality
             Console.WriteLine();
         }
 
+        internal static void DisplayWhetherEqual(Food food1, Food food2)
+        {
+            if (food1 == food2)
+                Console.WriteLine(string.Format("{0,12} == {1}", food1, food2)); 
+            else
+                Console.WriteLine(string.Format("{0,12} != {1}", food1, food2));
+        }
 
 
         /// <summary>
@@ -52,11 +59,15 @@ namespace Equality
         /// </summary>
         internal static void ReferenceTypesEquality()
         {
-            Food apple = new Food("apple", FoodGroup.Vegetables);
-            CookedFood cookedApple = new CookedFood("apple", FoodGroup.Vegetables, "stewed");
+            Food apple = new Food("apple", FoodGroup.Fruits);
+            CookedFood cookedApple = new CookedFood("apple", FoodGroup.Fruits, "stewed");
+            Food apple2 = new Food("apple", FoodGroup.Fruits);
+            CookedFood cookedApple2 = new CookedFood("apple", FoodGroup.Fruits, "stewed"); 
 
-            Console.WriteLine(apple);
-            Console.WriteLine(cookedApple);
+            DisplayWhetherEqual(apple, cookedApple);
+            DisplayWhetherEqual(apple, apple2);
+            DisplayWhetherEqual(cookedApple, cookedApple2);
+
         }
     }
 }
