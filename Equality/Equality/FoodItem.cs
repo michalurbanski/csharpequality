@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Equality
 {
-    public struct FoodItem
+    public struct FoodItem : IEquatable<FoodItem>
     {
         private readonly string _name;
         private readonly FoodGroup _group;
@@ -20,9 +20,53 @@ namespace Equality
             _group = group; 
         }
 
+        #region Overrides
+
         public override string ToString()
         {
-            return _name; 
+            return _name;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        /// <remarks>Less performance than IEquatable but nothing more can be done to improve performance</remarks>
+        public override bool Equals(object obj)
+        {
+            if (obj is FoodItem)
+                return Equals((FoodItem)obj);
+            else
+                return false;
+        } 
+
+        #endregion
+
+        #region IEquatable
+
+        public bool Equals(FoodItem other)
+        {
+            return _name == other.Name && _group == other.Group;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lhs">Value type so never will be null</param>
+        /// <param name="rhs">Value type so never will be null</param>
+        /// <returns></returns>
+        public static bool operator ==(FoodItem lhs, FoodItem rhs)
+        {
+            return lhs.Equals(rhs); 
+        }
+
+        public static bool operator !=(FoodItem lhs, FoodItem rhs)
+        {
+            return !lhs.Equals(rhs); 
+        }
+
     }
 }
