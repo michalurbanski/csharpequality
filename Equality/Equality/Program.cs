@@ -10,6 +10,16 @@ namespace Equality
     {
         static void Main(string[] args)
         {
+            ValueTypesEquality(); 
+        }
+
+
+        /// <summary>
+        /// Implements value types equality using structures
+        /// </summary>
+        internal static void ValueTypesEquality()
+        {
+
         }
     }
 }
