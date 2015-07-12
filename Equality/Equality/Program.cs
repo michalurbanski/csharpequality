@@ -10,8 +10,13 @@ namespace Equality
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Value types equality test");
             ValueTypesEquality();
-            ReferenceTypesEquality(); 
+            Console.WriteLine();
+
+            Console.WriteLine("Reference types eqaulity test");
+            ReferenceTypesEquality();
+            Console.WriteLine();
         }
 
 
@@ -47,7 +52,11 @@ namespace Equality
         /// </summary>
         internal static void ReferenceTypesEquality()
         {
-            throw new NotImplementedException();
+            Food apple = new Food("apple", FoodGroup.Vegetables);
+            CookedFood cookedApple = new CookedFood("apple", FoodGroup.Vegetables, "stewed");
+
+            Console.WriteLine(apple);
+            Console.WriteLine(cookedApple);
         }
     }
 }
