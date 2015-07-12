@@ -25,8 +25,8 @@ namespace Equality
                 Console.WriteLine(string.Format("{0,12} == {1}", food1, food2)); 
             else
                 Console.WriteLine(string.Format("{0,12} != {1}", food1, food2));
-        }
 
+        }
 
         /// <summary>
         /// Implements value types equality using structures
