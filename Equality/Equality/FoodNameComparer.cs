@@ -9,9 +9,10 @@ namespace Equality
     /// <summary>
     /// Alows food comparision by name
     /// </summary>
-    internal class FoodNameComparer : IComparer<Food>
+    /// <remarks>It's better to derive from base class than using interface, because base class implements both IComparer generic and non-generic</remarks>
+    internal class FoodNameComparer : Comparer<Food>
     {
-        public int Compare(Food x, Food y)
+        public override int Compare(Food x, Food y)
         {
             if (x == null && y == null)
                 return 0;
