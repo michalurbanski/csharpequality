@@ -78,14 +78,43 @@ namespace Equality
 
         private static void SortingCustomCollection()
         {
+            Console.WriteLine("First array of food");
+            
             Food[] food = new Food[]{
                 new Food("orange", FoodGroup.Fruits),
                 new Food("banana", FoodGroup.Fruits)
             };
 
-            Array.Sort(food, FoodNameComparer.Instance); 
+            SortAndShowArray(food); 
 
-            foreach(var item in food)
+            Console.WriteLine();
+
+            Console.WriteLine("Second array - mixed food and cooked food");
+
+            Food[] mixedFood = new Food[]{
+                new Food("apple", FoodGroup.Fruits), 
+                new CookedFood("apple", FoodGroup.Fruits, "baked")
+            };
+
+            SortAndShowArray(mixedFood);
+            
+            Console.WriteLine();
+
+            Console.WriteLine("Third array - mixed food and cooked food - reversed order");
+            Food[] mixedFoodReversedOrder = new Food[]{
+                new CookedFood("apple", FoodGroup.Fruits, "baked"),
+                new Food("apple", FoodGroup.Fruits)
+            };
+
+            SortAndShowArray(mixedFoodReversedOrder);
+            Console.WriteLine();
+        }
+
+        private static void SortAndShowArray(Food[] array)
+        {
+            Array.Sort(array, FoodNameComparer.Instance);
+
+            foreach(var item in array)
                 Console.WriteLine(item.ToString());
         }
     }
