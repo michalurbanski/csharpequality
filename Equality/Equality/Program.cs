@@ -17,7 +17,13 @@ namespace Equality
             Console.WriteLine("Reference types eqaulity test");
             ReferenceTypesEquality();
             Console.WriteLine();
+
+            Console.WriteLine("Sorting Food - reference type");
+            SortingCustomCollection(); 
+            Console.WriteLine();
         }
+
+        
 
         internal static void DisplayWhetherEqual(Food food1, Food food2)
         {
@@ -68,6 +74,19 @@ namespace Equality
             DisplayWhetherEqual(apple, apple2);
             DisplayWhetherEqual(cookedApple, cookedApple2);
 
+        }
+
+        private static void SortingCustomCollection()
+        {
+            Food[] food = new Food[]{
+                new Food("orange", FoodGroup.Fruits),
+                new Food("banana", FoodGroup.Fruits)
+            };
+
+            Array.Sort(food, new FoodNameComparer()); 
+
+            foreach(var item in food)
+                Console.WriteLine(item.ToString());
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Equality
 
         public override string ToString()
         {
-            return _name; 
+            return string.Format("{0} ({1})", _name, _group); 
         }
 
         public static bool operator ==(Food x, Food y)
