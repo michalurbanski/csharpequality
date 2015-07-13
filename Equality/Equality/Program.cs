@@ -21,6 +21,10 @@ namespace Equality
             Console.WriteLine("Sorting Food - reference type");
             SortingCustomCollection(); 
             Console.WriteLine();
+
+            Console.WriteLine("Custom IEqualityComparer for FoodItem struct");
+            HashSetFoodItemIgnoreCase(); 
+            Console.WriteLine();
         }
 
         
@@ -112,6 +116,21 @@ namespace Equality
 
             SortAndShowArray(mixedFoodReversedOrder);
             Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Adds items to HashSet ignoring case
+        /// </summary>
+        private static void HashSetFoodItemIgnoreCase()
+        {
+            HashSet<FoodItem> foodItems = new HashSet<FoodItem>(FoodItemEqualityComparer.Instance);
+
+            foodItems.Add(new FoodItem("apple", FoodGroup.Fruits));
+            foodItems.Add(new FoodItem("Apple", FoodGroup.Fruits)); // we want apple only to be added once
+
+            foreach (var item in foodItems)
+                Console.WriteLine(item.ToString());
+
         }
 
         private static void SortAndShowArray(Food[] array)
