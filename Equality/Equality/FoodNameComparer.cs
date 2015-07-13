@@ -26,7 +26,12 @@ namespace Equality
             if (y == null)
                 return 1;
 
-            return string.Compare(x.Name, y.Name, StringComparison.CurrentCulture);
+            int nameOrder = string.Compare(x.Name, y.Name, StringComparison.CurrentCulture);
+            if (nameOrder != 0)
+                return nameOrder; // different names 
+
+            // same names - sort by groupname in addition
+            return string.Compare(x.Group.ToString(), y.Group.ToString(), StringComparison.CurrentCulture);
 
         }
     }

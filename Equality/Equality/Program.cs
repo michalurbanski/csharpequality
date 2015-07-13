@@ -82,7 +82,8 @@ namespace Equality
             
             Food[] food = new Food[]{
                 new Food("orange", FoodGroup.Fruits),
-                new Food("banana", FoodGroup.Fruits)
+                new Food("banana", FoodGroup.Vegetables), 
+                new Food("banana", FoodGroup.Fruits) // the same names but in different group -> sorting by multiple fields 
             };
 
             SortAndShowArray(food); 
@@ -91,6 +92,7 @@ namespace Equality
 
             Console.WriteLine("Second array - mixed food and cooked food");
 
+            // There's no good solution for this sorting problem 
             Food[] mixedFood = new Food[]{
                 new Food("apple", FoodGroup.Fruits), 
                 new CookedFood("apple", FoodGroup.Fruits, "baked")
@@ -101,6 +103,8 @@ namespace Equality
             Console.WriteLine();
 
             Console.WriteLine("Third array - mixed food and cooked food - reversed order");
+
+            // There's no good solution for this sorting problem 
             Food[] mixedFoodReversedOrder = new Food[]{
                 new CookedFood("apple", FoodGroup.Fruits, "baked"),
                 new Food("apple", FoodGroup.Fruits)
