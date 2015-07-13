@@ -12,6 +12,11 @@ namespace Equality
     /// <remarks>It's better to derive from base class than using interface, because base class implements both IComparer generic and non-generic</remarks>
     internal class FoodNameComparer : Comparer<Food>
     {
+        private static FoodNameComparer _instance = new FoodNameComparer();
+        public static FoodNameComparer Instance { get { return _instance; } }
+
+        private FoodNameComparer() { }
+
         public override int Compare(Food x, Food y)
         {
             if (x == null && y == null)

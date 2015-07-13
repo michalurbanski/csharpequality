@@ -83,7 +83,7 @@ namespace Equality
                 new Food("banana", FoodGroup.Fruits)
             };
 
-            Array.Sort(food, new FoodNameComparer()); 
+            Array.Sort(food, FoodNameComparer.Instance); 
 
             foreach(var item in food)
                 Console.WriteLine(item.ToString());
