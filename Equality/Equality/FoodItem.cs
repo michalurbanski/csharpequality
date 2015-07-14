@@ -45,7 +45,10 @@ namespace Equality
         /// 
         /// </summary>
         /// <returns></returns>
-        /// <remarks>Needs to be implemented when Equals is implemented in order to work with HashTables</remarks>
+        /// <remarks>Needs to be implemented when Equals is implemented in order to work with HashTables
+        /// Always use the same fields in GetHashCode as in Equals method implementation. 
+        /// Equal values need to have the some code, otherwise hashtable will be broken. 
+        /// </remarks>
         public override int GetHashCode()
         {
             return _name.GetHashCode() ^ _group.GetHashCode(); // XOR

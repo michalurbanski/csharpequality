@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,10 @@ namespace Equality
 
             Console.WriteLine("Custom IEqualityComparer for FoodItem struct");
             HashSetFoodItemIgnoreCase(); 
+            Console.WriteLine();
+
+            Console.WriteLine("Structural equality");
+            StructuralEquality(); 
             Console.WriteLine();
         }
 
@@ -131,6 +136,29 @@ namespace Equality
             foreach (var item in foodItems)
                 Console.WriteLine(item.ToString());
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Structural equality means that both collection have the same elements in the same order
+        /// Only two collections allow to use structural equality: array and tuple
+        /// </remarks>
+        private static void StructuralEquality()
+        {
+            // Arrays are reference types so when using == or equals references are compared, which returns false results
+            string[] arr1 = new string[] { "banana", "apple" };
+            string[] arr2 = new string[] { "banana", "apple" };
+            Console.WriteLine(arr1 == arr2);
+            Console.WriteLine(arr1.Equals(arr2));
+
+            // In order to perform structural equality array requires casting to interface
+            var arrEq = (IStructuralEquatable)arr1;
+            bool areEqual = arrEq.Equals(arr2, StringComparer.OrdinalIgnoreCase); // NOTE: equality comparer is mandatory in such case
+            Console.WriteLine(areEqual);
+        
+            // The same approach is valid for IStructuralComparable
         }
 
         private static void SortAndShowArray(Food[] array)
